@@ -107,14 +107,15 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="image-responsive"> 
-			<div id="figure" class="col-xs-12 col-md-12">
+			<div id="how-we-do-it" class="col-xs-12 col-md-12">
 				<img src="images/diagram.png">
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div id="fig-description" class="col-xs-12 col-md-12">
-			<p class="lead" id="how-we-do-it">The system pulls in deal feeds from Twitter streams (and RSS 				feeds in the future) and writes them to a MongoDB object store. The raw tweets are read by a 				parser to identify the source URL, price, and description, which are stored along with some 				metadata (id, timestamp) in a traditional relational database. The descriptions are then used to 			generate search queries for several web markets (like Amazon and eBay). When results come back we 			compare the descriptions to see how well the two offers match, and then compare the prices. All 			these results go back into the relational database, and successful matches are pulled out by the 			web front end (or passed to other clients like our Twitter feed). </p>
+			<p class="lead">The system pulls in deal feeds from Twitter streams (and RSS
+			feeds in the future) and writes them to a MongoDB object store. The raw tweets are read by a 				parser to identify the source URL, price, and description, which are stored along with some 				metadata (id, timestamp) in a traditional relational database. The descriptions are then used to 			generate search queries for several web markets (like Amazon and eBay). When results come back we 			compare the descriptions to see how well the two offers match, and then compare the prices. All 			these results go back into the relational database, and successful matches are pulled out by the 			web front end (or passed to other clients like our Twitter feed). </p>
 		</div>
 	</div>
 </div>
@@ -158,6 +159,7 @@
 		</div>
 	</div>
 </div>
+<hr>
 <div class="row">
 	<div class="col-xs-12 col-md-12">
 		<p id="how-we-match-it">A crucial function of our application is the ability to take a product description parsed from a tweet, search eBay with it, and select the results that correspond to the exact product being searched for. This process is complicated by two factors: a matching product on eBay may be described with language that does not exactly match that parsed from the tweet, but, due to the nature of eBay’s keyword search engine, ALL listings returned will at least share some language with the parsed description. We decided to use machine learning to determine when a description is similar enough to be considered an exact match.
@@ -191,7 +193,7 @@ In order to train a model, we needed a dataset that closely simulated the real p
 	<li>Word count of the eBay description (.16)</li>
 	<li>Word count of the other description (.26)</li>
 	<li>Was any number was present in one description but not the other (.02)</li>
-	<li>Was any 4-digit number present in one description but not the other (.03)</li>\
+	<li>Was any 4-digit number present in one description but not the other (.03)</li>
 </ul>
 		</p>
 	</div>
