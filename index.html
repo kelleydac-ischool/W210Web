@@ -61,7 +61,7 @@
     <!-- HEADER -->
 
 <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron" id ="top">
+      <div class="jumbotron" id ="top" href="#top">
         <h1>Deal Trader</h1>
         <p>Is that tweet I got <em>really</em> a good deal?</p>
 
@@ -72,8 +72,7 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deal Trader -- Fact Checking for Deal Feeds</h3>
+        <h2>Deal Trader -- Fact Checking for Deal Feeds</h2>
 
 <p>Social media and RSS feeds are a great way for customers to hear about deals and for vendors to let people know what they have. Comparison shopping on 140 characters? Maybe not such a good idea.</p>
 
@@ -89,16 +88,14 @@
 
 <p>We don't keep your data so we can't sell it or lose it. We will be introducing feedback so you can tell us when we got it right and when we didn't, and we'll use that information to help improve our matching algorithms. But we don't use cookies or other identifiers to tie your comments to you.</p>
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
       </section>
     </div>
 <div class="container-fluid">
 	<div class="row">
-		<div id="figure" class="col-xs-8 col-md-8">
-			<img src="images/diagram.png">
+		<div class="image-responsive"> 
+			<div id="figure" class="col-xs-8 col-md-8">
+				<img src="images/diagram.png">
+			</div>
 		</div>
 		<div id="fig-description" class="col-xs-4 col-md-4">
 			<p class="lead">The system pulls in deal feeds from Twitter streams (and RSS feeds in the future) and writes them to a MongoDB object store. The raw tweets are read by a parser to identify the source URL, price, and description, which are stored along with some metadata (id, timestamp) in a traditional relational database. The descriptions are then used to generate search queries for several web markets (like Amazon and eBay). When results come back we compare the descriptions to see how well the two offers match, and then compare the prices. All these results go back into the relational database, and successful matches are pulled out by the web front end (or passed to other clients like our Twitter feed). 
@@ -141,10 +138,48 @@
 			</div>
 		</div>
 		<div class="col-xs-3 col-md-3">
-			<p class="lead">We trained the matcher on a validation set from <H1>INSERT URL HERE</H1>, delivering the performance shown at left. When we changed the objective function to weight matching failures more heavily, we reduced the false positive rate below 10%, which we felt was a critical performance target.</p>
+			<p class="lead">We trained the matcher on a validation set from <b>INSERT URL HERE</b>, delivering the performance shown at left. When we changed the objective function to weight matching failures more heavily, we reduced the false positive rate below 10%, which we felt was a critical performance target.</p>
 		</div>
 	</div>
 </div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+			<ul class="list-group list-group-hover">
+				<li>Deal Analysis</li>
+				<ul>
+					<li>Market price > Deal price: Potential trade (~75% of matches)</li>
+					<li>Accounting for shipping cost and using average market listing prices, 
+								average trade profit is ~$80</li>
+					<li>Using lowest market price, average trade profit drops to ~$48</li>
+					<li>Restricting to trades with >9 listings, average profit drops to ~$12</li>
+					<li>“Safe” trades are 45% of all potential trades</li>
+					<li>Assuming no possibility of multiple trades per deal - 
+								average time between trades is ~1h </li>
+				</ul>	
+			</ul>
+		</div>
+	</div>
+</div>	
+<div class="container-fluid">
+	<div class="lead">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<ul>
+					<li>Next Steps:
+					<ul class="list-group list-group-hover">	
+						<li>More input streams (including international)</li>
+						<li>Keyword analysis using TextRank and graph analysis</li>
+						<li>Full price capture (shipping/tax/FX) -- requires link scraping</li>
+						<li>Temporal analysis -- availability and price history</li>
+						<li>Personalization -- source preference, recommendations</li>
+					</ul>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 col-md-12">
