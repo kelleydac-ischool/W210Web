@@ -48,9 +48,9 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#main-content">Home</a></li>
               <li><a href="#top">About</a></li>
-              <li><a href="#how-we-did-it">Details</a></li>
+              <li><a href="#how-we-do-it">Details</a></li>
               <li><a href="#live-feed">Examples</a></li>
-              <li><a href="#footer-wrap">Contact</a></li>
+              <li><a href="#who-we-are">Contact</a></li>
               
             </ul>
             
@@ -98,7 +98,7 @@
 			</div>
 		</div>
 		<div id="fig-description" class="col-xs-4 col-md-4">
-			<p class="lead">The system pulls in deal feeds from Twitter streams (and RSS feeds in the future) and writes them to a MongoDB object store. The raw tweets are read by a parser to identify the source URL, price, and description, which are stored along with some metadata (id, timestamp) in a traditional relational database. The descriptions are then used to generate search queries for several web markets (like Amazon and eBay). When results come back we compare the descriptions to see how well the two offers match, and then compare the prices. All these results go back into the relational database, and successful matches are pulled out by the web front end (or passed to other clients like our Twitter feed). 
+			<p class="lead" id="how-we-do-it">The system pulls in deal feeds from Twitter streams (and RSS feeds in the future) and writes them to a MongoDB object store. The raw tweets are read by a parser to identify the source URL, price, and description, which are stored along with some metadata (id, timestamp) in a traditional relational database. The descriptions are then used to generate search queries for several web markets (like Amazon and eBay). When results come back we compare the descriptions to see how well the two offers match, and then compare the prices. All these results go back into the relational database, and successful matches are pulled out by the web front end (or passed to other clients like our Twitter feed). 
 			</p>
 		</div>
 	</div>
@@ -186,6 +186,18 @@
 		<div class="col-xs-12 col-md-12">
 				<iframe id="live-feed" src="http://people.ischool.berkeley.edu/~mhayes/dealtrader/index.html" width = "900" height = "900">
 				</iframe>	
+		</div>
+	</div>
+</div>
+<div class="container-fluid" id="who-we-are">
+	<div class="row">
+		<div col="xs-12 md-12">
+			<p class="lead">DealTrader was built by 
+				<a href="mailto:mlchayes@berkeley.edu?Subject=DealTrader">Matt Hayes</a>,
+				<a href="mailto:alex.risman@ischool.berkeley.edu?Subject=DealTrader">Alex Risman</a>, 
+				<a href="mailto:chula@ischool.berkeley.edu?Subject=DealTrader">Chula Watugala</a>,
+				and <a href="mailto:kelleydac@ischool.berkeley.edu?Subject=DealTrader">Doug Kelley</a> 
+				for our MIDS W210 Capstone Project in the Fall semester of 2015. </p>
 		</div>
 	</div>
 </div>
