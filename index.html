@@ -101,12 +101,50 @@
 			<img src="images/diagram.png">
 		</div>
 		<div id="fig-description" class="col-xs-4 col-md-4">
-			<p>The system pulls in deal feeds from Twitter streams (and RSS feeds in the future) and writes them to a MongoDB object store. The raw tweets are read by a parser to identify the source URL, price, and description, which are stored along with some metadata (id, timestamp) in a traditional relational database. The descriptions are then used to generate search queries for several web markets (like Amazon and eBay). When results come back we compare the descriptions to see how well the two offers match, and then compare the prices. All these results go back into the relational database, and successful matches are pulled out by the web front end (or passed to other clients like our Twitter feed). 
+			<p class="lead">The system pulls in deal feeds from Twitter streams (and RSS feeds in the future) and writes them to a MongoDB object store. The raw tweets are read by a parser to identify the source URL, price, and description, which are stored along with some metadata (id, timestamp) in a traditional relational database. The descriptions are then used to generate search queries for several web markets (like Amazon and eBay). When results come back we compare the descriptions to see how well the two offers match, and then compare the prices. All these results go back into the relational database, and successful matches are pulled out by the web front end (or passed to other clients like our Twitter feed). 
 			</p>
 		</div>
 	</div>
 </div>
-
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-9 col-md-9">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<caption>Matcher Training Performance</caption>
+					<tr>
+						<th></th>
+						<th>Equal Weight</th>
+						<th>3X Failure Weighting</th>
+					</tr>
+					<tr>
+						<td>Accuracy</td>
+						<td>80.5%</td>
+						<td>77.2%</td>
+					</tr>
+					<tr>
+						<td>Area Under ROC Curve</td>
+						<td>88.3%</td>
+						<td>88.0%</td>
+					</tr>
+					<tr>
+						<td>False Positive Rate</td>
+						<td>19.2%</td>
+						<td>9.7%</td>
+					</tr>
+					<tr>
+						<td>True Positive Rate</td>
+						<td>80.2%</td>
+						<td>63.3%</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-xs-3 col-md-3">
+			<p class="lead">We trained the matcher on a validation set from <H1>INSERT URL HERE</H1>, delivering the performance shown at left. When we changed the objective function to weight matching failures more heavily, we reduced the false positive rate below 10%, which we felt was a critical performance target.</p>
+		</div>
+	</div>
+</div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 col-md-12">
