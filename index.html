@@ -48,10 +48,10 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#main-content">Home</a></li>
               <li><a href="#top">About</a></li>
-              <li><a href="#how-we-do-it">Details</a></li>
               <li><a href="#live-feed">Examples</a></li>
-              <li><a href="#who-we-are">Contact</a></li>
-              
+              <li><a href="#how-we-do-it">Details</a></li>
+              <li><a href="#how-we-match-it">Matching</a></li>
+			  <li><a href="#who-we-are">Contact</a></li>
             </ul>
             
           </div><!--/.nav-collapse -->
@@ -64,7 +64,6 @@
       <div class="jumbotron" id ="top" href="#top">
         <h1>Deal Trader</h1>
         <p>Is that tweet I got <em>really</em> a good deal?</p>
-
       </div>
 
 
@@ -74,32 +73,48 @@
       <section id="main_content" class="inner">
         <h2>Deal Trader -- Fact Checking for Deal Feeds</h2>
 
-<p class="lead">Social media and RSS feeds are a great way for customers to hear about deals and for vendors to let people know what they have. Comparison shopping on 140 characters? Maybe not such a good idea.</p>
+		<p class="lead">Social media and RSS feeds are a great way for customers to hear about deals and for 			vendors to let people know what they have. Comparison shopping on 140 characters? Maybe not such 			a good idea.</p>
 
-<p>Deal Trader is here to help. Using natural language processing and machine learning techniques, we can grab the information from the tweet, kick off a search of other common vendors (like Amazon and eBay) and let you know right away if that price is really a good deal or not.</p>
+		<p>Deal Trader is here to help. Using natural language processing and machine learning techniques, we 			can grab the information from the tweet, kick off a search of other common vendors (like Amazon 			and eBay) and let you know right away if that price is really a good deal or not.</p>
+		
+		<p>We've kept the site simple to to keep it mobile-friendly. Please contact us if we answer any questions.</p>
 
-<h3>
-<a class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>How We Do It</h3>
+		<h3><a class="anchor" aria-hidden="true">
+			<span class="octicon octicon-link"></span></a>How We Do It</h3>
 
-<p>We pull tweets from <a id="slick-deals" class="anchor" href = "https://twitter.com/slickdeals">SlickDeals</a> and <a id="amazon-deals" href = "https://twitter.com/amazondeals?lang=en" class="anchor">Amazon Lightning Deals</a> and parse the content to pull out the link URL, the price, and the description. We then search other sites for similar items, and match the description returned from the other vendor. If the descriptions match we compare the prices and display results, letting you know whether it's a good price or not.</p>
+		<p>We pull tweets from <a id="slick-deals" class="anchor" 
+			href = "https://twitter.com/slickdeals">SlickDeals</a> and 
+			<a id="amazon-deals" href = "https://twitter.com/amazondeals?lang=en" class="anchor">
+			Amazon Lightning Deals</a> and parse the content to pull out the link URL, the price, and 					the description. We then search other sites for similar items, and match the description 					returned from the other vendor. If the descriptions match we compare the prices and display 				results, letting you know whether it's a good price or not.</p>
 
-<h3>
-<a id="privacy" class="anchor" href="#privacy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Privacy</h3>
+		<h3><a id="privacy" class="anchor" href="#privacy" aria-hidden="true">
+			<span class="octicon octicon-link"></span></a>Privacy</h3>
 
-<p>We don't keep your data so we can't sell it or lose it. We will be introducing feedback so you can tell us when we got it right and when we didn't, and we'll use that information to help improve our matching algorithms. But we don't use cookies or other identifiers to tie your comments to you.</p>
+		<p>We don't keep your data so we can't sell it or lose it. We will be introducing feedback so you can 			tell us when we got it right and when we didn't, and we'll use that information to help improve 			our matching algorithms. But we don't use cookies or other identifiers to tie your comments to 				you.</p>
 
       </section>
     </div>
+    
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<iframe id="live-feed" src="http://people.ischool.berkeley.edu/~mhayes/dealtrader/index.html" width = "900" height = "900">
+				</iframe>	
+			</div>
+		</div>
+	</div>
+    
 <div class="container-fluid">
 	<div class="row">
 		<div class="image-responsive"> 
-			<div id="figure" class="col-xs-8 col-md-8">
+			<div id="figure" class="col-xs-12 col-md-12">
 				<img src="images/diagram.png">
 			</div>
 		</div>
-		<div id="fig-description" class="col-xs-4 col-md-4">
-			<p class="lead" id="how-we-do-it">The system pulls in deal feeds from Twitter streams (and RSS feeds in the future) and writes them to a MongoDB object store. The raw tweets are read by a parser to identify the source URL, price, and description, which are stored along with some metadata (id, timestamp) in a traditional relational database. The descriptions are then used to generate search queries for several web markets (like Amazon and eBay). When results come back we compare the descriptions to see how well the two offers match, and then compare the prices. All these results go back into the relational database, and successful matches are pulled out by the web front end (or passed to other clients like our Twitter feed). 
-			</p>
+	</div>
+	<div class="row">
+		<div id="fig-description" class="col-xs-12 col-md-12">
+			<p class="lead" id="how-we-do-it">The system pulls in deal feeds from Twitter streams (and RSS 				feeds in the future) and writes them to a MongoDB object store. The raw tweets are read by a 				parser to identify the source URL, price, and description, which are stored along with some 				metadata (id, timestamp) in a traditional relational database. The descriptions are then used to 			generate search queries for several web markets (like Amazon and eBay). When results come back we 			compare the descriptions to see how well the two offers match, and then compare the prices. All 			these results go back into the relational database, and successful matches are pulled out by the 			web front end (or passed to other clients like our Twitter feed). </p>
 		</div>
 	</div>
 </div>
@@ -139,8 +154,46 @@
 			</div>
 		</div>
 		<div class="col-xs-3 col-md-3">
-			<p class="lead">We trained the matcher on a validation set from <b>INSERT URL HERE</b>, delivering the performance shown at left. When we changed the objective function to weight matching failures more heavily, we reduced the false positive rate below 10%, which we felt was a critical performance target.</p>
+			<p class="lead">We trained the matcher on a validation set as described below, delivering the performance shown at left. When we changed the objective function to weight matching failures more heavily, we reduced the false positive rate below 10%, which we felt was a critical performance target.</p>
 		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-12">
+		<p id="how-we-match-it">A crucial function of our application is the ability to take a product description parsed from a tweet, search eBay with it, and select the results that correspond to the exact product being searched for. This process is complicated by two factors: a matching product on eBay may be described with language that does not exactly match that parsed from the tweet, but, due to the nature of eBay’s keyword search engine, ALL listings returned will at least share some language with the parsed description. We decided to use machine learning to determine when a description is similar enough to be considered an exact match.
+In order to train a model, we needed a dataset that closely simulated the real problem we faced. Not being able to find a large dataset that met our needs, we decided to create one. Noting that listings on both eBay and Best Buy for certain product categories, such as music, DVDs, and video games, contain Universal Product Codes (UPCs), we realized we could use these retailers’ respective APIs (found here and here) to generate the data we needed.  Our final dataset had three columns: Best Buy description, eBay description, and whether or not this pair was a match (represented with a 1 or a 0). Our strategy to create it was as follows:
+<ol class="list-group list-group-hover">
+	<li>Find a Best Buy listing containing a UPC</li>
+	<li>Retrieve the product description and UPC</li>
+    <li>Search eBay with this UPC</li>
+	<li>For each distinct eBay product description returned, create a row in our dataset with 
+			the Best Buy description, the eBay description, and a “1”, for match.</li>
+	<li>Search eBay with the Best Buy description.</li>
+	<li>For each listing returned</li>
+	<ul>
+		<li>Check if its UPC matched the Best Buy one</li>
+		<li>If not, create a row in our dataset with the Best Buy description, 
+				the eBay description, and a “0”, for no match</li>
+	</ul>
+</ol>
+<p>Using this strategy, we looped through about 30,000 Best Buy products and found an average of 5 matching and 5 non-matching eBay listings for each of them, creating a final dataset of about 300,000 rows that closely simulated our tweet-to-eBay problem. This enabled us to create a highly accurate record-matching model. This model was a Random Forest that used the following features (with feature importance score in parentheses):</p>
+<ul class="list-group">
+	<li>Distance of the descriptions from each other in word vector space</li>
+	<ul>
+		<li>Euclidean (.05)</li>
+		<li>Manhattan (.05)</li>
+		<li>Chebyshev (.01)</li>
+		<li>Hamming (.12)</li>
+		<li>Cosine (.18)</li>
+	</ul>
+	<li>Is the last word the same (.03) </li>
+	<li>Is the first word the same (.08)</li>
+	<li>Word count of the eBay description (.16)</li>
+	<li>Word count of the other description (.26)</li>
+	<li>Was any number was present in one description but not the other (.02)</li>
+	<li>Was any 4-digit number present in one description but not the other (.03)</li>\
+</ul>
+		</p>
 	</div>
 </div>
 <hr>
@@ -181,14 +234,6 @@
 	</div>
 </div>
 <hr>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-xs-12 col-md-12">
-				<iframe id="live-feed" src="http://people.ischool.berkeley.edu/~mhayes/dealtrader/index.html" width = "900" height = "900">
-				</iframe>	
-		</div>
-	</div>
-</div>
 <div class="container-fluid" id="who-we-are">
 	<div class="row">
 		<div col="xs-12 md-12">
